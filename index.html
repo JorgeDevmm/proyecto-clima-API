@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busqueda - Clima</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/tailwind.min.css" rel="stylesheet" />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header class="bg-header">
+      <h1
+        id="titulo"
+        class="text-4xl py-4 text-black font-bold uppercase text-center"
+      >
+        Busqueda del Clima
+      </h1>
+    </header>
+    <div class="container mx-auto flex-grow">
+      <div class="mx-auto lg:flex">
+        <div class="p-6 mt-10 w-full">
+          <div id="resultado">
+            <img src="img/clima.png" alt="clima.png" />
+            <p class="text-center text-white mt-6">
+              Agrega tu ciudad y país, el resultado se mostrará aquí
+            </p>
+          </div>
+        </div>
+
+        <form
+          id="formulario"
+          class="mt-10 w-full lg:flex flex-col justify-center gap-10 px-5"
+          action="#"
+          method="POST"
+        >
+          <div class="mt-5">
+            <label for="pais" class="text-white font-bold"
+              >Ingrese una Ciudad:</label
+            >
+            <input
+              type="text"
+              name="ciudad"
+              id="ciudad"
+              placeholder="Escribe tu Ciudad"
+              class="w-full p-4 rounded"
+            />
+          </div>
+
+          <div class="mt-5">
+            <label for="pais" class="text-white font-bold"
+              >Seleccione un País:</label
+            >
+            <select
+              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-4 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="pais"
+            >
+              <option disabled selected value="">-- Seleccione --</option>
+              <option value="AR">Argentina</option>
+              <option value="CO">Colombia</option>
+              <option value="CR">Costa Rica</option>
+              <option value="ES">España</option>
+              <option value="US">Estados Unidos</option>
+              <option value="MX">México</option>
+              <option value="PE">Perú</option>
+            </select>
+          </div>
+
+          <input
+            type="submit"
+            class="mt-5 w-full bg-blue-300 text-black p-3 uppercase font-bold cursor-pointer rounded"
+            value="Obtener Clima"
+          />
+        </form>
+      </div>
+    </div>
+
+    <footer class="mt-auto">
+      <p class="text-center text-blue-300 py-4 font-bold">
+        Realizado por Jorge L. Monzón
+      </p>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>
