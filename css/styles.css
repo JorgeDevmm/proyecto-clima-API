@@ -2,10 +2,6 @@ html {
     background: #252928;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #185a9d, #252928);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #185a9d, #252928); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-    
-
     
 }
 
@@ -19,6 +15,8 @@ body{
     background: -webkit-linear-gradient(to right, #98c1d9, #e0fbfc);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #e0fbfc, #98c1d9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+
 
 .sk-fading-circle {
     margin: 100px auto;
