@@ -3,6 +3,7 @@ const container = document.querySelector('.container');
 const resultado = document.querySelector('#resultado');
 const formulario = document.querySelector('#formulario');
 const btnEnviar = document.querySelector('.obtener');
+const btnLimpiar = document.querySelector('.limpiar');
 const resultadoContenido = document.querySelector('#resultado__contenido');
 
 // eventos
@@ -68,7 +69,7 @@ function mostrarError(textoMensaje) {
   limpiarAlertas(formulario, 'mensaje');
 
   // Agregar al DOM, después del botón de enviar
-  btnEnviar.insertAdjacentElement('afterend', mensaje);
+  btnLimpiar.insertAdjacentElement('afterend', mensaje);
 
   // agregramos el resultadoDiv al resultado
   resultado.append(noEncontrado);
