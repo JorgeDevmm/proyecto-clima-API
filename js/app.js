@@ -76,14 +76,19 @@ function limpiarAlertas(referenciaContenedor, claseReferencia) {
 }
 
 function consultarAPI(ciudad, pais) {
+  // api key
   const appId = 'b8f2e5f6b1d2d0b67d7445bb43f535a2';
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
+
+  // muestra un Spinner de carga
+  spinner();
 
   // consultamos la información de la api
   fetch(url)
     .then((respuesta) => respuesta.json())
     .then((datos) => {
+      console.log(datos);
       // limpiar html duplicados de datos previo
       limpiarHTML();
       if (datos.cod === '404') {
@@ -99,10 +104,18 @@ function consultarAPI(ciudad, pais) {
 function mostrarClima(datosClima) {
   const {
     main: { temp, temp_max, temp_min },
+    name,
   } = datosClima;
 
   // Convertir a centigrados
   const centigrados = kelvinACentigrado(temp);
+  const max = kelvinACentigrado(temp_max);
+  const min = kelvinACentigrado(temp_min);
+
+  // creamos nombre ciudad
+  const ciudadNombre = document.createElement('h3');
+  ciudadNombre.textContent = `Clima: ${name}`;
+  ciudadNombre.classList.add('text-center', 'text-4xl', 'font-bold');
 
   // creamos parrafos
   const actual = document.createElement('p');
@@ -110,11 +123,22 @@ function mostrarClima(datosClima) {
   actual.innerHTML = `${centigrados} &#8451;`;
   actual.classList.add('font-bold', 'text-6xl');
 
+  const tempMaxima = document.createElement('p');
+  tempMaxima.innerHTML = `Max: ${max} &#8451`;
+  tempMaxima.classList.add('text-xl');
+
+  const tempMinima = document.createElement('p');
+  tempMinima.innerHTML = `Min: ${min} &#8451`;
+  tempMinima.classList.add('text-xl');
+
   const resultadoDiv = document.createElement('DIV');
   resultadoDiv.classList.add('text-center', 'text-white');
 
   // agregramos el parrafo actual a resultadoDiv
+  resultadoDiv.appendChild(ciudadNombre);
   resultadoDiv.appendChild(actual);
+  resultadoDiv.appendChild(tempMaxima);
+  resultadoDiv.appendChild(tempMinima);
 
   // agregramos el resultadoDiv al resultado
   resultado.append(resultadoDiv);
@@ -129,4 +153,13 @@ function limpiarHTML() {
       resultado.removeChild(resultado.firstChild);
     }
   }
+}
+
+function spinner() {
+  limpiarHTML();
+  const spinner = document.createElement('DIV');
+  // agrego clase de estilo spinner y para centrar x y y
+  spinner.classList.add('loader', 'mx-auto', 'my-auto');
+
+  resultado.appendChild(spinner);
 }
