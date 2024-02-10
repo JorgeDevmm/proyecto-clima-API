@@ -5,9 +5,6 @@ const formulario = document.querySelector('#formulario');
 const btnEnviar = document.querySelector('.obtener');
 const resultadoContenido = document.querySelector('#resultado__contenido');
 
-
-
-
 // eventos
 window.addEventListener('load', () => {
   formulario.addEventListener('submit', buscarClima);
@@ -82,7 +79,7 @@ function mostrarError(textoMensaje) {
     limpiarHTML();
     resultado.append(resultadoContenido);
     formulario.reset();
-  }, 5000);
+  }, 3000);
 }
 
 function limpiarAlertas(referenciaContenedor, claseReferencia) {
