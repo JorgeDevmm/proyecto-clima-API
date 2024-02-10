@@ -3,6 +3,10 @@ const container = document.querySelector('.container');
 const resultado = document.querySelector('#resultado');
 const formulario = document.querySelector('#formulario');
 const btnEnviar = document.querySelector('.obtener');
+const resultadoContenido = document.querySelector('#resultado__contenido');
+
+
+
 
 // eventos
 window.addEventListener('load', () => {
@@ -27,10 +31,16 @@ function buscarClima(e) {
 }
 
 function mostrarError(textoMensaje) {
+  limpiarHTML();
+
   // creación de scripting
   const mensaje = document.createElement('DIV');
+
   const strong = document.createElement('strong');
   const span = document.createElement('span');
+
+  const noEncontrado = document.createElement('DIV');
+  const img = document.createElement('img');
 
   mensaje.classList.add(
     'p-5',
@@ -40,6 +50,8 @@ function mostrarError(textoMensaje) {
     'font-bold',
     'mensaje' /**referenica de clase */
   );
+
+  img.src = 'img/not-found.jpg';
 
   strong.classList.add('font-bold');
   span.classList.add('block');
@@ -52,16 +64,25 @@ function mostrarError(textoMensaje) {
   mensaje.append(strong);
   mensaje.append(span);
 
+  // inserta imagen
+  noEncontrado.append(img);
+
   // limpia la alerta de duplicidad antes de la insertación, argumentos: contenedor, y referencia clase
   limpiarAlertas(formulario, 'mensaje');
 
   // Agregar al DOM, después del botón de enviar
   btnEnviar.insertAdjacentElement('afterend', mensaje);
 
+  // agregramos el resultadoDiv al resultado
+  resultado.append(noEncontrado);
+
   // Quitar la alerta después de 5 segundos
   setTimeout(() => {
     mensaje.remove();
-  }, 3000);
+    limpiarHTML();
+    resultado.append(resultadoContenido);
+    formulario.reset();
+  }, 5000);
 }
 
 function limpiarAlertas(referenciaContenedor, claseReferencia) {
@@ -81,6 +102,7 @@ function consultarAPI(ciudad, pais) {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
 
+  limpiarHTML();
   // muestra un Spinner de carga
   spinner();
 
@@ -162,4 +184,12 @@ function spinner() {
   spinner.classList.add('loader', 'mx-auto', 'my-auto');
 
   resultado.appendChild(spinner);
+}
+
+function limpiarFormulario() {
+  limpiarHTML();
+  limpiarAlertas(formulario, 'mensaje');
+  formulario.reset();
+  resultado.append(resultadoContenido);
+  // mensaje.remove();
 }

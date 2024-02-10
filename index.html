@@ -25,10 +25,14 @@
     </header>
     <div class="container lg:mt-12 mx-auto flex-grow">
       <div class="mx-auto lg:flex">
-        <div class="p-6 mt-10 w-full">
+        <div class="p-6 mt-10 w-full lg:flex flex-col justify-center gap-10">
           <div id="resultado">
             <div id="resultado__contenido">
-              <img src="img/clima.png" alt="clima.png" />
+              <img
+                src="img/clima.png"
+                alt="clima.png"
+                class="w-20rem mx-auto resultado-img"
+              />
               <p class="text-center text-white mt-6">
                 Agrega tu ciudad y país, el resultado se mostrará aquí
               </p>
@@ -38,12 +42,12 @@
 
         <form
           id="formulario"
-          class="mt-10 w-full lg:flex flex-col justify-center gap-10 px-5"
+          class="mt-10 w-full lg:flex flex-col justify-center gap-10 px-5 lg:p-12"
           action="#"
           method="POST"
         >
           <div class="mt-5">
-            <label for="pais" class="text-white font-bold"
+            <label for="pais" class="text-white font-bold text-lg"
               >Ingrese una Ciudad:</label
             >
             <input
@@ -56,7 +60,7 @@
           </div>
 
           <div class="mt-5">
-            <label for="pais" class="text-white font-bold"
+            <label for="pais" class="text-white font-bold text-lg"
               >Seleccione un País:</label
             >
             <select
@@ -86,8 +90,15 @@
 
           <input
             type="submit"
-            class="mt-5 w-full bg-blue-300 text-black p-3 uppercase font-bold cursor-pointer rounded obtener"
+            class="mt-5 w-full bg-blue-300 text-black p-4 uppercase font-bold cursor-pointer rounded obtener"
             value="Buscar Clima"
+          />
+
+          <input
+            type="button"
+            class=" w-full bg-yellow-600 text-white p-4 uppercase font-bold cursor-pointer rounded obtener"
+            value="Limpiar Formulario"
+            onclick="limpiarFormulario()"
           />
         </form>
       </div>
